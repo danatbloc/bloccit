@@ -8,7 +8,7 @@
 
 
 require 'random_data'
-  
+
  50.times do
 
    Post.create!(
@@ -36,6 +36,15 @@ require 'random_data'
   body: "This is the unique comment."
  )
 
+ 10.times do
+   Advertisement.create!(
+    title: RandomData.random_sentence,
+    copy: RandomData.random_paragraph,
+    price: rand(10..50)
+   )
+ end
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+ puts "#{Advertisement.count} ads created"
