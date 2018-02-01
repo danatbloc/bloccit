@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'advertisements/index'
 
   get 'advertisements/show'
@@ -11,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :posts, except: [:index]
-  end 
+    resources :sponsored_posts, except: [:index]
+  end
 
   resources :advertisements
 
