@@ -25,7 +25,7 @@ source 'https://rubygems.org'
  gem 'thor', '0.19.1'
 
  gem 'bootstrap-sass'
-
+ gem 'bcrypt'
 
  group :development do
    # Use sqlite3 as the development database for Active Record
