@@ -11,14 +11,7 @@
    </div>
    <div class="col-md-8">
 
-    <%= form_for [@topic, @post] do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
+     <%= render partial: 'form', locals: {topic: @topic, post: @post} %>
 
-      <%= f.label :body %>
-      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
-
-      <%= f.submit "Save", class: 'btn btn-success' %>
-    <% end %>
   </div>
 </div>
