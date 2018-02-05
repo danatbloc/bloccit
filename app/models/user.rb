@@ -17,7 +17,7 @@ class User < ApplicationRecord
   private
 
   def capitalize
-    self.name = name.split.map{ |n| n.downcase.capitalize }.join(" ")
+    self.name = name.split.map{ |n| n.downcase.capitalize }.join(" ") if name.present?
   end
 
 end
