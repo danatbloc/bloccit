@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'advertisements/index'
-
-  get 'advertisements/show'
-
-  get 'advertisements/new'
-
-  get 'advertisements/create'
-
   root 'welcome#index'
 
   resources :topics do
@@ -18,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :advertisements
+
+  resources :questions
 
   get 'about' => 'welcome#about'
 
