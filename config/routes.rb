@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create]
+  post 'users/confirm' => 'users#confirm'
 
   resources :advertisements
 
@@ -18,6 +19,5 @@ Rails.application.routes.draw do
   get 'welcome/contact'
 
   get 'welcome/faq'
-
 
 end
