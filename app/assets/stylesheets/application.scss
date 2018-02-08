@@ -21,3 +21,12 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+.nav li:not(:last-child) {
+  margin-top: 3px;
+}
+
+#gravitar{
+  margin-bottom: 1px;
+}
