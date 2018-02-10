@@ -6,7 +6,10 @@ RSpec.describe Post, type: :model do
   let(:title) { RandomData.random_sentence }
   let(:body) { RandomData.random_paragraph }
   let(:topic) { Topic.create!(name: name, description: description) }
-  let(:post) { topic.posts.create!(title: title, body: body) }
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloc.io", password: "password") }
+  let(:post) { topic.posts.create!(title: title, body: body, user: user) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to validate_presence_of(:user) }
   it { is_expected.to belong_to(:topic) }
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:body) }
@@ -16,7 +19,7 @@ RSpec.describe Post, type: :model do
 
   describe "attributes" do
     it "has title and body attributes" do
-      expect(post).to have_attributes(title: title, body: body)
+      expect(post).to have_attributes(title: title, body: body, user: user)
     end
   end
 end
