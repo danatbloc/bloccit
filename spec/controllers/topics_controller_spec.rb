@@ -365,7 +365,6 @@ RSpec.describe TopicsController, type: :controller do
     end
 
     describe "DELETE destroy" do
-
       it "returns http redirect" do
         delete :destroy, params: { id: my_topic.id }
         expect(response).to redirect_to(topics_path)
