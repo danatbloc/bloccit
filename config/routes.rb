@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  resources :posts, only: [] do
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :topics do
     resources :posts, except: [:index]
     resources :sponsored_posts, except: [:index]
