@@ -11,7 +11,7 @@
   <div class="col-md-8">
     <p class="lead"><%= @topic.description %></p>
 
-    <%= render @topic.posts %>
+    <%= render @topic.posts, topic: @topic %> 
 
     <h3>Sponsored Posts</h3>
     <% @topic.sponsored_posts.each do |post| %>
