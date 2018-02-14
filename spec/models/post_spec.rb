@@ -70,5 +70,25 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq (old_rank - 1)
       end
     end
+
+    describe "#create_vote" do
+
+      let(:new_post) { topic.posts.new(title: title, body: body, user: user) }
+
+      it "triggers create_vote after post is created" do
+        expect(new_post).to receive(:create_vote).at_least(:once)
+        new_post.save!
+      end
+
+      it "automatically up_votes the users post" do
+        new_post.save!
+        expect(new_post.up_votes).to eq(1)
+      end
+
+      it "associates vote to user" do
+        new_post.save!
+        expect(new_post.votes.first.user).to eq(new_post.user)
+      end
+    end
   end
 end
