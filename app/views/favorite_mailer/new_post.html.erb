@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>This serves to notify you that your post, "<%= @post.title %>", is automatically favored by you. You will receive an email alert with each new comment added to your post.</h3>
+
+    <p>
+      If you wish to turn off notifications for this post, please follow <%= link_to "this link", topic_post_url(@post.topic, @post) %> and click "UnFavorite".
+    </p>
+    <p>Bloccit Team</p>
+  </body>
+</html>
