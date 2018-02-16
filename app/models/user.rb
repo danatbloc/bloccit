@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   before_save { self.email = email.downcase if email.present? }
   before_save :capitalize
@@ -21,10 +22,12 @@ class User < ApplicationRecord
 
   enum role: [:member, :admin, :moderator]
 
-  private
-
   def capitalize
     self.name = name.split.map{ |n| n.downcase.capitalize }.join(" ") if name.present?
+  end
+
+  def favorite_for(post)
+    favorites.where(post_id: post.id).first
   end
 
 end

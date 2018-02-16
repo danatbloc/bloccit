@@ -41,5 +41,8 @@
         </small>
       </div>
     </h3>
+    <% if current_user %>
+      <%= render 'favorites/favorite', post: @post %>
+    <% end %>
   </div>
 </div>

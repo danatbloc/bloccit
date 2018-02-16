@@ -26,6 +26,7 @@ source 'https://rubygems.org'
 
  gem 'bootstrap-sass'
  gem 'bcrypt'
+ gem 'figaro'
 
  group :development do
    # Use sqlite3 as the development database for Active Record

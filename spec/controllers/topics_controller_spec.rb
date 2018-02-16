@@ -261,7 +261,7 @@ RSpec.describe TopicsController, type: :controller do
     describe "DELETE destroy" do
       it "deletes the topic" do
         delete :destroy, params: { id: my_topic.id }
-        count = Post.where({id: my_topic.id}).size
+        count = Topic.where({id: my_topic.id}).size
         expect(count).to eq 0
       end
 
