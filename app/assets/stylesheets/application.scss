@@ -14,27 +14,11 @@
  *= require_self
  */
 
-
-
-
-
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 
-.nav li {
-  margin: 3px 0 0;
-}
-
-#gravitar{
-  margin: -3px 0 0;
-}
-
-.sign-out-link {
-  width: 100px;
-  height: 45px;
-  text-align: right;
-  margin-top: -1px;
-  padding-top: 3px !important;
+.sign_in,
+.sign_out {
+  line-height: 39px;
 }

@@ -17,13 +17,17 @@
         <li><%= link_to "Bloccit", root_path %></li>
         <li><%= link_to "Topics", topics_path %></li>
         <li><%= link_to "About", about_path %></li>
-        <% if current_user %>
-          <li class="pull-right"><%= image_tag avatar_url(current_user), id:"gravitar" %></li>
-          <li class="pull-right"><%= link_to "#{current_user.name} Sign Out", session_path(current_user), method: :delete, class:"sign-out-link" %></li>
-        <% else %>
-          <li class="pull-right"><%= link_to "Sign In", new_session_path %></li>
-          <li class="pull-right"><%= link_to "Sign Up", new_user_path %></li>
-        <% end %>
+
+        <div class="pull-right user-info">
+          <% if current_user %>
+            <li class="pull-left", style="margin-right: 8px"><%= image_tag current_user.avatar_url(48) %></li>
+            <li class="pull-right", style="margin-left: 7px" ><%= link_to current_user.name, user_path(current_user) %></li><br>
+            <li class="pull-right"><%= link_to "Sign Out", session_path(current_user), method: :delete %></li>
+          <% else %>
+            <li class="pull-right sign_in", style="margin-left: 9px"><%= link_to "Sign In", new_session_path %></li>
+            <li class="pull-right sign_out"><%= link_to "Sign Up", new_user_path %></li>
+          <% end %>
+        </div>
       </ul>
 
       <% if flash[:notice] %>

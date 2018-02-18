@@ -4,7 +4,11 @@ class TopicsController < ApplicationController
   before_action :authorize_admin, only: [:new, :create, :destroy]
 
   def index
-    @topics = Topic.all
+    if current_user
+      @topics = Topic.all
+    else
+      @topics = Topic.all.public_only
+    end
   end
 
   def show
