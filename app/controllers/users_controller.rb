@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.visible_to(current_user)
+    @post_display = are_there_any_user_posts_out_there
+    @comment_display = are_there_any_user_comments_out_there
+    @current_user_favorite_posts = current_user_favorite_posts
   end
 
   def confirm
@@ -31,6 +34,30 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :password_digest)
+  end
+
+  def are_there_any_user_posts_out_there
+    if @posts.empty?
+      "#{@user.name} has not submitted any posts yet."
+    else
+      "Posts"
+    end
+  end
+
+  def are_there_any_user_comments_out_there
+    if @user.comments.empty?
+      "#{@user.name} has not submitted any comments yet."
+    else
+      "Comments"
+    end
+  end
+
+  def current_user_favorite_posts
+    if current_user
+      current_user.favorites.map{ |f| Post.find(f.post_id) }
+    else
+      []
+    end
   end
 
 end

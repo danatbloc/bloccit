@@ -1,4 +1,5 @@
 require 'rails_helper'
+include SessionsHelper
 
 RSpec.describe UsersController, type: :controller do
 
@@ -19,6 +20,22 @@ RSpec.describe UsersController, type: :controller do
     it "instantiates a new user" do
       get :new
       expect(assigns(:user)).to_not be_nil
+    end
+  end
+
+  describe "GET show" do
+
+    let(:new_user) { create(:user) }
+    let(:post) { create(:post) }
+
+    before do
+      create_session(new_user)
+      @favorite = new_user.favorites.create(post: post)
+    end
+
+    it "displays the favorite posts of the current user on all show pages" do
+      get :show, params: { id: new_user.id }
+      expect(assigns(:current_user_favorite_posts)).to eq([post])
     end
   end
 

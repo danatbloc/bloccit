@@ -20,8 +20,15 @@
 </div>
 
 
-<h2>Posts</h2>
+<h2><%= @post_display %></h2>
 <%= render @user.posts %>
 
-<h2>Comments</h2>
+<h2><%= @comment_display %></h2>
 <%= render @user.comments %>
+
+<% if current_user && !(@current_user_favorite_posts.empty?) %>
+  <h2>My Favorite Posts</h2>
+  <% @current_user_favorite_posts.each do |post| %>
+    <%= render 'posts/favorite_posts', post: post %>
+  <% end %>
+<% end %>

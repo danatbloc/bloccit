@@ -46,4 +46,5 @@ source 'https://rubygems.org'
    gem 'rails-controller-testing'
    gem 'shoulda'
    gem 'factory_bot_rails', '~> 4.0'
+   gem 'byebug', platform: :mri
  end
