@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SponsoredPostsController, type: :controller do
 
-  let(:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
-  let(:my_post) { my_topic.sponsored_posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(50..100)) }
+  let(:my_topic) { create(:topic) }
+  let(:my_post) { create(:sponsored_post, topic: my_topic) }
 
 
   describe "GET show" do

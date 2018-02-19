@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AdvertisementsController, type: :controller do
 
-  let(:my_ad) {Advertisement.create!(title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: rand(10..50))}
+  let(:my_ad) { create(:advertisement) }
 
   describe "GET #index" do
     it "returns http success" do

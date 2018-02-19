@@ -2,23 +2,13 @@ require 'rails_helper'
 
 RSpec.describe SponsoredPost, type: :model do
 
-  let(:name) { RandomData.random_sentence }
-  let(:description) { RandomData.random_paragraph }
-  let(:title) { RandomData.random_sentence }
-  let(:body) { RandomData.random_paragraph }
-  let(:price) { rand(50..100) }
-
-  let(:topic) { Topic.create!(name: name, description: description) }
-  let(:post) { topic.sponsored_posts.create!(title: title, body: body, price: price) }
+  let(:my_topic) { create(:topic) }
+  let(:post) { create(:sponsored_post, topic: my_topic) }
   it { is_expected.to belong_to(:topic) }
 
   describe "attributes" do
     it "has title and body attributes" do
-      expect(post).to have_attributes(title: title, body: body, price: price )
+      expect(post).to have_attributes(title: post.title, body: post.body, price: post.price )
     end
   end
-
-
-
-
 end
