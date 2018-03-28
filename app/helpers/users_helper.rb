@@ -8,6 +8,8 @@ module UsersHelper
     end
   end
 
+  
+
   def are_there_any_user_comments_out_there
     if @user.comments.empty?
       "#{@user.name} has not submitted any comments yet."
